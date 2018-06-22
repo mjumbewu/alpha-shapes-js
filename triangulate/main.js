@@ -4,11 +4,11 @@ let height = canvas.height;
 
 var points = [];
 
-for (let _ = 0; _ < 5000; ++_) {
-  let point = [Math.random() * width,
-               Math.random() * height];
-  points.push(point);
-}
+// for (let _ = 0; _ < 5000; ++_) {
+//   let point = [Math.random() * width,
+//                Math.random() * height];
+//   points.push(point);
+// }
 
 // const delaunay = Delaunator.from(points);
 const edgekey = function(eis) { return Math.min(...eis) + ',' + Math.max(...eis); };
@@ -209,6 +209,8 @@ function drawAsTriangles(ctx, edge_points) {
 
 function drawAsPolygons(ctx, inner_triangles) {
   let shape = turf.union(...inner_triangles);
+  // debugger;
+  shape = turf.buffer(shape.geometry, 0.1, {units: 'miles'})
   console.log(shape);
 
   function drawPolygon(rings) {
