@@ -1,14 +1,19 @@
+/*
+Credit to http://blog.thehumangeo.com/2014/05/12/drawing-boundaries-in-python/
+for the logic in the alpha-shapes code. Adapted for JS from Python.
+*/
+
 var canvas = document.getElementById('thecanvas');
 let width = canvas.width;
 let height = canvas.height;
 
 var points = [];
 
-// for (let _ = 0; _ < 5000; ++_) {
-//   let point = [Math.random() * width,
-//                Math.random() * height];
-//   points.push(point);
-// }
+for (let _ = 0; _ < 5000; ++_) {
+  let point = [Math.random() * width,
+               Math.random() * height];
+  points.push(point);
+}
 
 // const delaunay = Delaunator.from(points);
 const edgekey = function(eis) { return Math.min(...eis) + ',' + Math.max(...eis); };
